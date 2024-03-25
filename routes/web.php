@@ -14,7 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/genders', [GenderController::class, 'index']);
-Route::get('/gender/create', [GenderController::class, 'create']);
-
-Route::post('/gender/store', [GenderController::class, 'store']);
+Route::controller(GenderController::class)->group(function() {
+    Route::get('/genders', 'index');
+    Route::get('/gender/create', 'create');
+    Route::get('/gender/show/{id}', 'show');
+    Route::get('/gender/edit/{id}', 'edit');
+    Route::get('/gender/delete/{id}', 'delete');
+    
+    Route::post('/gender/store', 'store');
+    Route::put('/gender/update/{gender}', 'update');
+    Route::delete('/gender/destroy/{gender}', 'destroy');
+});

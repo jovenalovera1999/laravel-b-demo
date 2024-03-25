@@ -12,8 +12,8 @@
         <!-- .nav-menu -->
         <nav id="navbar" class="nav-menu navbar">
             <ul>
-                <li><a href="#"><span>List of Users</span></a></li>
-                <li><a href="#"><span>Add Gender</span></a></li>
+                <li><a href="/genders"><span>List of Users</span></a></li>
+                <li><a href="/gender/create"><span>Add Gender</span></a></li>
             </ul>
         </nav>
     </div>

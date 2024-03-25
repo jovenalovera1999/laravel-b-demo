@@ -23,8 +23,10 @@ class GenderController extends Controller
         return view('gender.index', compact('genders'));
     }
 
-    public function show() {
+    public function show($id) {
+        $gender = Gender::find($id); // SELECT * FROM genders WHERE gender_id = id;
 
+        return view('gender.show', compact('gender'));
     }
 
     public function create() {
@@ -41,20 +43,28 @@ class GenderController extends Controller
         return redirect('/genders')->with('message_success', 'Gender successfully saved.');
     }
 
-    public function edit() {
-
+    public function edit($id) {
+        $gender = Gender::find($id);
+        return view('gender.edit', compact('gender'));
     }
 
-    public function update() {
+    public function update(Request $request, Gender $gender) {
+        $validated = $request->validate([
+            'gender' => ['required']
+        ]);
 
+        $gender->update($validated); // UPDATE genders SET gender = $validated->gender WHERE gender_id = $validated->gender_id;
+
+        return redirect('/genders')->with('message_success', 'Gender successfully updated.');
     }
 
-    public function delete() {
-
+    public function delete($id) {
+        $gender = Gender::find($id);
+        return view('gender.delete', compact('gender'));
     }
 
-    public function destory() {
-
+    public function destroy(Request $request, Gender $gender) {
+        $gender->delete($request); // DELETE FROM genders WHERE gender_id = $request->gender_id;
+        return redirect('/genders')->with('message_success', 'Gender successfully deleted.');
     }
-
 }

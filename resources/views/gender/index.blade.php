@@ -33,9 +33,9 @@
                             <td>{{ $gender->updated_at }}</td>
                             <td>
                                 <div class="btn-group">
-                                    <a href="#" class="btn btn-outline-primary">View</a>
-                                    <a href="#" class="btn btn-outline-warning">Edit</a>
-                                    <a href="#" class="btn btn-outline-danger">Delete</a>
+                                    <a href="/gender/show/{{ $gender->gender_id }}" class="btn btn-outline-primary">View</a>
+                                    <a href="/gender/edit/{{ $gender->gender_id }}" class="btn btn-outline-warning">Edit</a>
+                                    <a href="/gender/delete/{{ $gender->gender_id }}" class="btn btn-outline-danger">Delete</a>
                                 </div>
                             </td>
                         </tr>
